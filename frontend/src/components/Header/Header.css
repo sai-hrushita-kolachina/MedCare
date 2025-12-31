@@ -1,0 +1,124 @@
+.header {
+  position: relative;
+  width: 100%;
+  height: 34vw;
+  margin: 30px 0px;
+  border-radius: 20px;
+  overflow: hidden;
+  margin-bottom: 100px;
+}
+
+.header-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.header-contents {
+  position: absolute;
+  bottom: 15%;
+  left: 6%;
+  max-width: 45%;
+  display: flex;
+  flex-direction: column;
+  gap: 1.2vw;
+  color: #050328;
+  animation: fadeIn 1.5s ease-in-out;
+}
+
+.header-contents h2 {
+  font-size: 4vw;
+  font-weight: 600;
+}
+
+.header-contents p {
+  font-size: 1.1vw;
+  opacity: 0.9;
+}
+
+.header-contents button {
+  background: #100b65;
+  color: white;
+  padding: 0.7vw 1.4vw; 
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  font-size: max(1vw, 13px);
+  transition: 0.3s;
+  width: 300px;    
+  min-width: 160px;      
+}
+
+
+.header-contents button:hover {
+  background: #1d4ed8;
+  transform: scale(1.05);
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+
+@media (max-width:1050px) {
+  .header {
+    height: 38vw !important;
+    background-size: contain !important;
+  }
+
+  .header-contents {
+    max-width: 45% !important;
+    bottom: 12% !important;
+    left: 6vw !important;
+  }
+}
+
+@media (max-width:750px) {
+
+  .header {
+    height: 45vw !important;
+    margin: 20px auto !important;
+    border-radius: 16px;
+    overflow: hidden;
+    background-size: contain !important;
+    background-position: center !important;
+  }
+
+  .header-contents {
+    max-width: 55% !important;
+    left: 5vw !important;
+    bottom: 10% !important;
+    gap: 2vw !important;
+  }
+
+  .header-contents h2 {
+    font-size: max(5vw, 20px) !important;
+    color: black !important;
+  }
+
+  .header-contents p {
+    display: none !important;  
+  }
+
+  .header-contents button {
+    padding: 2vw 4vw !important;
+    border-radius: 50px !important;
+    font-size: max(1vw, 12px) !important;
+  }
+}
+
+
+@media (max-width:480px) {
+  .header {
+    height: 52vw !important;
+  }
+
+  .header-contents h2 {
+    font-size: max(6vw, 18px) !important;
+  }
+}

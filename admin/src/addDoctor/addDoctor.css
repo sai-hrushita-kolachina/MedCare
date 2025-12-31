@@ -1,0 +1,80 @@
+.add-doctor-container {
+  padding: 30px 40px;
+}
+
+.page-title {
+  font-size: 28px;
+  font-weight: 700;
+  color: #0b3275;
+  margin-bottom: 20px;
+  padding-top: 0 !important;
+}
+
+.add-doctor-box {
+  width: 60%;
+  background: white;
+  padding: 32px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.09);
+}
+
+.form-label {
+  font-size: 15px;
+  font-weight: 600;
+  margin-bottom: 6px;
+  display: block;
+}
+
+.form-input {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #dcdcdc;
+  border-radius: 6px;
+  margin-bottom: 18px;
+  font-size: 15px;
+}
+
+.upload-box {
+  width: 160px;
+  height: 110px;
+  border: 2px dashed #c9c9c9;
+  border-radius: 8px;
+  background: #f8f8f8;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  margin-bottom: 18px;
+}
+
+.upload-icon {
+  width: 35px;
+  opacity: 0.6;
+}
+
+.upload-box p {
+  margin-top: 8px;
+  font-size: 14px;
+  color: #666;
+}
+
+.upload-box:hover {
+  background: #f1f1f1;
+}
+
+.submit-btn {
+  width: 180px;
+  padding: 12px;
+  background: #0b3275;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 16px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.submit-btn:hover {
+  background: #072552;
+}

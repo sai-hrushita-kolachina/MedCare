@@ -1,0 +1,408 @@
+.doctor-profile-page {
+  width: 80%;
+  margin: 40px auto;
+  margin-left: 100px;
+}
+
+.doctor-main-box {
+  width: 100%;
+  background: #fff;
+  padding: 25px 30px;
+  border: 1px solid #e5e5e5;
+  border-radius: 14px;
+  box-shadow: 0px 4px 12px rgba(0,0,0,0.08);
+  margin-bottom: 80px;
+}
+
+.doctor-main-content {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+}
+
+.doctor-image {
+  width: 260px;
+  height: 260px;
+  object-fit: cover;
+  border-radius: 18px;
+  background-color: #94adf3;
+}
+
+
+.doctor-details {
+  display: flex;
+  flex-direction: column;
+}
+
+.doctor-name {
+  font-size: 32px;
+  font-weight: 700;
+  color: #100b65;
+}
+
+.doctor-specialization {
+  font-size: 18px;
+  color: #666;
+}
+
+.doctor-info {
+  margin-bottom: 10px;
+  font-size: 16px;
+}
+
+.doctor-about {
+  font-size: 16px;
+  line-height: 1.7;
+  max-width: 800px;
+}
+
+.consultation-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 50px;
+  margin-bottom: 180px;
+  width: 100%;
+  margin-top: 100px;
+}
+
+.left-stack {
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-left: 120px;
+}
+
+.doctor-right {
+  width: 100%;
+  padding: 32px;
+  border-radius: 18px;
+  background: #fff;
+  border: 1px solid #e8e8e8;
+  box-shadow: 0px 8px 30px rgba(0,0,0,0.06);
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.consult-btn {
+  width: 80%;
+  padding: 16px;
+  font-size: 17px;
+  font-weight: 600;
+  border-radius: 14px;
+  border: none;
+  margin-bottom: 18px;
+  cursor: pointer;
+  transition: 0.25s;
+
+}
+
+.audio-btn { background: #d3d6fa}
+.video-btn { background: #d3d6fa }
+.chat-btn  { background: #d3d6fa; border: 1px solid #ddd; }
+
+.consult-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0px 6px 18px rgba(0,0,0,0.15);
+
+}
+
+.consult-btn.active {
+  background: #100b65 !important;
+  color: white !important;
+  border: 1px solid #100b65 !important;
+  transform: translateY(-2px);
+}
+
+
+.proceed-btn {
+  margin-top: 20px;
+  width: 100%;
+  padding: 16px;
+  font-size: 18px;
+  font-weight: 600;
+  background: #100b65;
+  color: white;
+  border: none;
+  border-radius: 14px;
+  cursor: pointer;
+  transition: 0.25s;
+}
+
+.proceed-btn:hover {
+  background: #241da9;
+  transform: translateY(-3px);
+}
+
+.proceed-btn.disabled {
+  background: #b8b8d1;
+  cursor: not-allowed;
+  transform: none !important;
+  box-shadow: none !important;
+}
+
+
+.proceed-btn.disabled.shake {
+  animation: shake 0.3s ease-in-out !important;
+  pointer-events: none;
+}
+
+
+.proceed-btn.shake {
+  animation: shake 0.3s ease-in-out;
+  box-shadow: 0 0 10px rgba(255, 0, 0, 0.4) !important;
+}
+
+
+.shake {
+  animation: shake 0.4s ease;
+}
+
+@keyframes shake {
+  0% { transform: translateX(0); }
+  20% { transform: translateX(-6px); }
+  40% { transform: translateX(6px); }
+  60% { transform: translateX(-6px); }
+  80% { transform: translateX(6px); }
+  100% { transform: translateX(0); }
+}
+
+
+.availability-box {
+  width: 40%;
+  background: #fff;
+  padding: 25px;
+  border-radius: 18px;
+  border: 1px solid #ddd;
+  box-shadow: 0px 4px 12px rgba(0,0,0,0.08);
+  margin-left: 80px;
+}
+
+.date-list {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+  overflow-x: auto;
+}
+
+.date-list::-webkit-scrollbar { display: none; }
+
+.date-item {
+  min-width: 70px;
+  padding: 10px;
+  text-align: center;
+  border-radius: 12px;
+  border: 1px solid #ddd;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.date-item.selected {
+  background: #100b65 !important;
+  color: white !important;
+  border-color: #100b65 !important;
+}
+
+.time-slots {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.slot-btn {
+  padding: 10px 18px;
+  border-radius: 10px;
+  background: #f2f3ff;
+  border: 1px solid #ddd;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.slot-btn.slot-selected {
+  background: #100b65;
+  color: white;
+  border-color: #100b65;
+}
+
+.slot-btn:hover {
+  background: #241da9;
+  color: white;
+}
+
+.selected-info {
+  margin-top: 18px;
+  font-size: 15px;
+  color: #444;
+}
+
+@media (max-width: 850px) {
+  .consultation-wrapper {
+    flex-direction: column;
+  }
+  .left-stack, .availability-box {
+    width: 100%;
+  }
+}
+
+
+@media (max-width: 1024px) {
+  .doctor-profile-page {
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .doctor-main-content {
+    gap: 25px;
+  }
+
+  .doctor-image {
+    width: 220px;
+    height: 220px;
+  }
+
+  .left-stack {
+    margin-left: 0;
+    width: 100%;
+  }
+
+  .availability-box {
+    width: 100%;
+    margin-left: 0;
+  }
+}
+
+
+@media (max-width: 768px) {
+  .doctor-profile-page {
+    width: 94%;
+    margin: 30px auto;
+  }
+
+  .doctor-main-content {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .doctor-image {
+    width: 180px;
+    height: 180px;
+    margin-bottom: 10px;
+  }
+
+  .doctor-name {
+    font-size: 26px;
+  }
+
+  .doctor-specialization {
+    font-size: 16px;
+  }
+
+  .doctor-about {
+    font-size: 15px;
+    text-align: center;
+  }
+
+  .consultation-wrapper {
+    flex-direction: column;
+    gap: 30px;
+    margin-top: 40px;
+  }
+
+  .left-stack {
+    width: 100%;
+    margin-left: 0;
+  }
+
+  .doctor-right {
+    width: 100%;
+    padding: 24px;
+  }
+
+  .consult-btn {
+    width: 100%;
+    font-size: 16px;
+  }
+
+  .proceed-btn {
+    width: 100%;
+  }
+
+  .availability-box {
+    width: 100%;
+    margin-left: 0;
+    padding: 20px;
+  }
+}
+
+@media (max-width: 430px) {
+  .doctor-profile-page {
+    width: 94%;
+    margin: 20px auto;
+  }
+
+  .doctor-main-box {
+    padding: 18px;
+  }
+
+  .doctor-image {
+    width: 150px;
+    height: 150px;
+  }
+
+  .doctor-name {
+    font-size: 22px;
+  }
+
+  .doctor-specialization {
+    font-size: 14px;
+  }
+
+  .doctor-about {
+    font-size: 14px;
+  }
+
+  .consult-btn {
+    padding: 14px;
+    font-size: 15px;
+  }
+
+  .proceed-btn {
+    padding: 14px;
+    font-size: 16px;
+  }
+
+  .availability-box {
+    padding: 16px;
+  }
+
+  .date-item {
+    min-width: 60px;
+    padding: 8px;
+    font-size: 14px;
+  }
+
+  .slot-btn {
+    padding: 8px 14px;
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 360px) {
+  .doctor-image {
+    width: 130px;
+    height: 130px;
+  }
+
+  .doctor-name {
+    font-size: 20px;
+  }
+
+  .slot-btn {
+    padding: 7px 12px;
+    font-size: 13px;
+  }
+}

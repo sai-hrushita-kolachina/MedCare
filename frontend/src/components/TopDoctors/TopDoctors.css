@@ -1,0 +1,230 @@
+.topdoctors-container {
+  width: 92%;             
+  margin-bottom: 90px !important;      
+  text-align: center;    
+}
+
+.td-title {
+  font-size: 32px;
+  font-weight: 600;
+  color: #1a1a1a;
+  margin-bottom: 10px;
+}
+
+.td-subtitle {
+  font-size: 14px;
+  color: #666;
+  margin-bottom: 40px;
+}
+
+.td-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 25px;
+  width: 100%;
+  margin-top: 20px;
+  margin-bottom: 50px;
+}
+
+.td-card {
+  border: 1px solid #d0e3ff;
+  border-radius: 15px;
+  background: #fff;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  overflow: hidden;
+}
+
+.td-card:hover {
+  transform: translateY(-8px);
+}
+
+
+.td-image-wrapper {
+  width: 100%;
+  height: 210px;
+  background: #eff6ff;               
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  overflow: hidden;
+}
+
+.td-image {
+  width: auto;
+  height: 100%;
+  object-fit: contain;
+}
+
+
+.td-info {
+  padding: 6px 10px 8px 10px;
+  line-height: 1.05;
+  height : 100px;
+  text-align: left;
+}
+
+.td-name {
+  font-size: 18px;
+  font-weight: 600;
+  color: #1a1a1a;
+  margin-bottom: 2px;
+}
+
+.td-speciality {
+  font-size: 14px;
+  color: #666;
+  margin-bottom: 0.5px;
+}
+
+.td-exp {
+  font-size: 14px;
+  font-weight: 500;
+  color: #1d4ed8;
+}
+
+.td-more-btn {
+  margin-top: 40px;
+  padding: 12px 25px;
+  border-radius: 30px;
+  background: #e6f0ff;
+  border: none;
+  cursor: pointer;
+  font-size: 15px;
+  color: #555;
+  transition: 0.3s;
+  margin-bottom: 0px;
+}
+
+.td-more-btn:hover {
+  background: #d0e3ff;
+}
+
+@media (max-width: 1200px) {
+  .td-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 850px) {
+  .td-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 550px) {
+  .td-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .td-image-wrapper {
+    height: 220px;
+  }
+}
+
+
+
+@media (max-width: 1000px) {
+  .td-title {
+    font-size: 28px;
+  }
+
+  .td-subtitle {
+    font-size: 13px;
+  }
+
+  .td-image-wrapper {
+    height: 190px;
+  }
+}
+
+@media (max-width: 650px) {
+  .topdoctors-container {
+    width: 94%;
+    margin: 40px auto;
+  }
+
+  .td-title {
+    font-size: 24px;
+  }
+
+  .td-subtitle {
+    font-size: 12px;
+    margin-bottom: 25px;
+  }
+
+  .td-card {
+    border-radius: 12px;
+  }
+
+  .td-image-wrapper {
+    height: 200px;
+  }
+
+  .td-info {
+    height: auto;
+    padding: 10px 12px;
+  }
+
+  .td-name {
+    font-size: 17px;
+  }
+
+  .td-speciality,
+  .td-exp {
+    font-size: 13px;
+  }
+}
+
+
+@media (max-width: 430px) {
+  .topdoctors-container {
+    margin: 30px auto;
+  }
+
+  .td-title {
+    font-size: 22px;
+  }
+
+  .td-subtitle {
+    font-size: 12px;
+    margin-bottom: 20px;
+  }
+
+  .td-image-wrapper {
+    height: 180px;
+  }
+
+  .td-name {
+    font-size: 16px;
+  }
+
+  .td-speciality {
+    font-size: 12px;
+  }
+
+  .td-exp {
+    font-size: 12px;
+  }
+
+  .td-more-btn {
+    padding: 10px 20px;
+    font-size: 14px;
+    margin-top: 20px;
+    margin-bottom: 60px;
+  }
+}
+
+@media (max-width: 360px) {
+  .td-image-wrapper {
+    height: 160px;
+  }
+
+  .td-name {
+    font-size: 15px;
+  }
+}

@@ -1,0 +1,154 @@
+.success-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 90vh;
+  background: #f8f9ff;
+}
+
+.success-card {
+  background: white;
+  padding-top: 10px !important;
+  padding: 30px 40px;
+  border-radius: 16px;
+  box-shadow: 0 4px 25px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  width: 360px;
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+
+.success-details {
+  margin-top: 15px;
+  background: #f1f4ff;
+  padding: 15px;
+  border-radius: 12px;
+  font-size: 15px;
+  text-align: left;
+}
+
+.success-btn {
+  width: 50%;
+  margin-top: 20px;
+  padding: 12px;
+  background: #100b65;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 15px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.success-btn:hover {
+  background: #0d0952;
+}
+
+.home-btn {
+  width: 50%;
+  margin-top: 12px;
+  padding: 11px;
+  background: #100b65;
+  color: white;
+  border: 2px solid #100b65;
+  border-radius: 8px;
+  font-size: 15px;
+  cursor: pointer;
+  transition: 0.2s ease;
+  margin-bottom: 20px;
+}
+
+.home-btn:hover {
+  background: #100b65;
+  color: white;
+}
+
+.success-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center; 
+  gap: 10px; 
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+
+@media (max-width: 900px) {
+  .success-container {
+    height: auto;
+    padding: 40px 0;
+  }
+
+  .success-card {
+    width: 80%;
+  }
+
+  .success-details {
+    font-size: 14px;
+    padding: 14px;
+  }
+}
+
+
+@media (max-width: 600px) {
+  .success-card {
+    width: 90%;
+    padding: 25px 25px;
+    border-radius: 14px;
+  }
+
+  .success-details {
+    font-size: 13.5px;
+    padding: 12px;
+  }
+
+  .success-btn {
+    padding: 10px;
+    font-size: 15px;
+  }
+}
+
+@media (max-width: 430px) {
+  .success-container {
+    padding: 30px 0;
+  }
+
+  .success-card {
+    width: 92%;
+    padding: 20px 20px;
+  }
+
+  .success-details {
+    font-size: 13px;
+  }
+
+  .success-btn {
+    padding: 10px;
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 360px) {
+  .success-card {
+    width: 95%;
+    padding: 18px 18px;
+  }
+
+  .success-btn {
+    font-size: 13.5px;
+  }
+
+  .success-details {
+    font-size: 12.5px;
+  }
+}

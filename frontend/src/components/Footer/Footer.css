@@ -1,0 +1,180 @@
+.footer {
+  width: 90%;
+  margin: 0 auto;
+  padding: 60px 0 30px;
+  background: #ffffff;
+  margin-top: 40px;
+
+}
+
+.footer-container {
+  width: 90%;
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 50px;
+}
+
+.footer-logo {
+  padding-top: 1px;
+  font-size: 26px;
+  font-weight: 700;
+  color: #100b65;
+  margin-bottom: 15px;
+}
+
+.footer-logo-img {
+  width: 220px;       
+  height: auto;
+  object-fit: contain;
+}
+
+
+.footer-desc {
+  font-size: 15px;
+  color: #444;
+  line-height: 1.9;
+  max-width: 500px;
+
+}
+
+.footer-title {
+  padding-top: 0px;
+  font-size: 22px;
+  font-weight: 600;
+  margin-bottom: 18px;
+  color: #100b65;
+}
+
+
+.footer-links {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-links li a {
+  text-decoration: none;
+  color: #444;
+  font-size: 15px;
+  transition: 0.2s;
+}
+
+.footer-links li {
+  margin-bottom: 6px;
+}
+
+.footer-links li a:hover {
+  color: #100b65;
+}
+
+
+.footer-contact {
+  font-size: 15px;
+  color: #444;
+  margin: 5px 0;
+
+}
+
+
+.footer-bottom {
+  width: 100%;
+  text-align: center;
+  margin-top: 2px;
+  padding-top: 20px;
+  font-size: 14px;
+  color: #555;
+  border-top: 1px solid #ddd;
+}
+
+.footer-lift {
+  margin-top: -20px;
+}
+
+@media (max-width: 850px) {
+  .footer-container {
+    flex-direction: column;
+    text-align: left;
+  }
+}
+
+
+@media (max-width: 1100px) {
+  .footer-container {
+    gap: 40px;
+  }
+
+  .footer-desc {
+    max-width: 90%;
+  }
+}
+
+@media (max-width: 850px) {
+  .footer-container {
+    flex-direction: column;
+    gap: 35px;
+    width: 100%;
+  }
+
+  .footer-section {
+    width: 100%;
+  }
+
+  .footer-links li a,
+  .footer-contact {
+    font-size: 15px;
+  }
+}
+
+@media (max-width: 650px) {
+  .footer {
+    padding: 40px 0 25px;
+  }
+
+  .footer-logo {
+    font-size: 24px;
+  }
+
+  .footer-title {
+    font-size: 20px;
+  }
+
+  .footer-desc {
+    font-size: 14px;
+  }
+
+  .footer-links li a {
+    font-size: 14px;
+  }
+
+  .footer-contact {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 450px) {
+  .footer {
+    padding: 35px 0 20px;
+  }
+
+  .footer-container {
+    gap: 25px;
+  }
+
+  .footer-title {
+    font-size: 18px;
+  }
+
+  .footer-desc {
+    font-size: 13px;
+    line-height: 1.5;
+  }
+
+  .footer-links li a {
+    font-size: 13px;
+  }
+
+  .footer-bottom {
+    font-size: 12px;
+  }
+}

@@ -1,0 +1,270 @@
+.top-summary {
+  max-width: 1100px;
+  margin: 20px auto 20px auto;
+  padding: 12px 20px;
+  background: #f7f8ff;
+  border: 1px solid #e0e1ff;
+  border-radius: 10px;
+  margin-top: 40px;
+  margin-bottom: 0;
+}
+.top-summary p span {
+  margin-right: 110px;
+}
+
+
+.top-summary p {
+  margin: 0;
+  font-size: 15px;
+  color: #100b65;
+  font-weight: 500;
+}
+
+.booksession-container {
+  max-width: 1200px;
+  margin: 20px auto;
+  display: flex;
+  gap: 40px;
+  padding: 20px;
+}
+.two-input-row {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 15px;
+}
+
+.two-input-row input {
+  flex: 1;
+  padding: 12px;
+  border: 1px solid #dcdcdc;
+  border-radius: 8px;
+  font-size: 15px;
+}
+
+.full-input {
+  width: 100%;
+  padding: 12px ;
+  border: 1px solid #dcdcdc;
+  border-radius: 8px;
+  margin-bottom: 15px;
+  font-size: 15px;
+  box-sizing: border-box;
+}
+
+.two-input-row input:focus,
+.full-input:focus {
+  outline: none;
+  border: 1.5px solid #100b65;
+}
+
+
+.details-section {
+  flex: 1;
+  background: #ffffff;
+  padding: 25px;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.details-section h2 {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.detail-box {
+  margin-bottom: 16px;
+}
+
+.detail-box label {
+  font-size: 14px;
+  color: #555;
+}
+
+.detail-box p {
+  font-size: 16px;
+  font-weight: 500;
+  margin-top: 5px;
+}
+
+.payment-section {
+  width: 380px;
+  background: #ffffff;
+  padding: 25px;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.payment-section h3 {
+  font-size: 20px;
+  margin-bottom: 20px;
+}
+
+.cart-totals .row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 12px;
+  font-size: 16px;
+}
+
+.cart-totals .total {
+  font-weight: 600;
+}
+
+.payment-method {
+  margin: 20px 0;
+}
+
+.payment-option {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  margin-bottom: 12px;
+}
+
+.payment-option.active {
+  border: 1.5px solid #100b65;
+  background: #f3f5ff;
+}
+
+.place-order-btn {
+  width: 100%;
+  background: #100b65;
+  color: white;
+  padding: 14px;
+  font-size: 16px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.place-order-btn:hover {
+  background: #08063d;
+}
+
+
+
+@media (max-width: 992px) {
+  .booksession-container {
+    flex-direction: column;
+    padding: 15px;
+    gap: 30px;
+  }
+
+  .payment-section {
+    width: 100%;
+  }
+
+  .details-section h2 {
+    font-size: 22px;
+  }
+
+  .payment-section h3 {
+    font-size: 18px;
+  }
+}
+
+
+@media (max-width: 768px) {
+  .top-summary {
+    padding: 15px;
+  }
+
+  .top-summary p {
+    font-size: 14px;
+  }
+
+  .top-summary p span {
+    margin-right: 20px; 
+  }
+
+  .two-input-row {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .two-input-row input {
+    width: 100%;
+  }
+
+  .full-input {
+    font-size: 14px;
+  }
+
+  .details-section {
+    padding: 20px;
+  }
+
+  .payment-section {
+    padding: 20px;
+  }
+
+  .cart-totals .row {
+    font-size: 15px;
+  }
+
+  .place-order-btn {
+    padding: 12px;
+    font-size: 15px;
+  }
+}
+
+@media (max-width: 480px) {
+  .top-summary {
+    width: 95%;
+    margin-top: 25px;
+  }
+
+  .booksession-container {
+    padding: 10px;
+  }
+
+  .details-section h2 {
+    font-size: 20px;
+  }
+
+  .payment-section h3 {
+    font-size: 17px;
+  }
+
+  .detail-box p {
+    font-size: 14px;
+  }
+
+  .payment-option {
+    padding: 10px;
+    gap: 8px;
+  }
+
+  .place-order-btn {
+    padding: 12px;
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 360px) {
+  .details-section,
+  .payment-section {
+    padding: 16px;
+  }
+
+  .detail-box p {
+    font-size: 13px;
+  }
+
+  .top-summary p {
+    font-size: 13px;
+  }
+
+  .payment-option {
+    padding: 8px;
+  }
+
+  .place-order-btn {
+    font-size: 13px;
+    padding: 12px;
+  }
+}
