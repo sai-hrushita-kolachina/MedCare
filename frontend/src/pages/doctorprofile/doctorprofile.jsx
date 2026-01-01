@@ -35,7 +35,7 @@ const DoctorProfile = () => {
   const proceedBtnRef = useRef(null);
 
   useEffect(() => {
-    fetch(`http://localhost:4000/api/alldoctors/${id}`)
+    fetch(`${import.meta.env.VITE_BACKEND_URL}/api/alldoctors/${id}`)
       .then((res) => res.json())
       .then((data) => setDoctor(data))
       .catch((err) => console.log(err));
@@ -123,7 +123,7 @@ const DoctorProfile = () => {
         <div className="doctor-main-content">
 
           <img
-            src={`http://localhost:4000${doctor.image}`}
+            src={`${import.meta.env.VITE_BACKEND_URL}${doctor.image}`}
             alt={doctor.name}
             className="doctor-image"
           />

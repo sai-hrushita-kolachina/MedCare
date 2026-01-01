@@ -8,7 +8,7 @@ export const AppContextProvider = ({ children }) => {
 
   const getDoctorsData = async () => {
     try {
-      const response = await fetch("http://localhost:4000/api/doctor/get");
+      const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/doctor/get`);
       const data = await response.json();
 
       if (Array.isArray(data)) {
@@ -23,7 +23,7 @@ export const AppContextProvider = ({ children }) => {
 
   const getAllDoctors = async () => {
     try {
-      const response = await fetch("http://localhost:4000/api/alldoctors");
+      const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/alldoctors`);
       const data = await response.json();
 
       if (Array.isArray(data)) {

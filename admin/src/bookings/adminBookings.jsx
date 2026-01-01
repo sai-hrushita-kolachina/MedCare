@@ -7,7 +7,7 @@ export default function AdminBookings() {
 
   const fetchBookings = async () => {
     try {
-      const res = await axios.get("http://localhost:4000/api/sessions/all");
+      const res = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/api/sessions/all`);
       setBookings(res.data);
     } catch (err) {
       console.log("Error fetching bookings:", err);
@@ -17,7 +17,7 @@ export default function AdminBookings() {
   const updateStatus = async (id, status) => {
     try {
       await axios.put(
-        `http://localhost:4000/api/sessions/status/${id}`,
+        `${import.meta.env.VITE_BACKEND_URL}/api/sessions/status/${id}`,
         { status }
       );
       fetchBookings();
@@ -45,7 +45,7 @@ export default function AdminBookings() {
               src={
                 b.doctorImage?.startsWith("http")
                   ? b.doctorImage
-                  : `http://localhost:4000${b.doctorImage}`
+                  : `${import.meta.env.VITE_BACKEND_URL}${b.doctorImage}`
               }
               alt="doctor"
               className="booking-doctor-img"

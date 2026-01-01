@@ -80,7 +80,7 @@ const Doctors = () => {
           >
             <div className="td-image-wrapper">
               <img
-                src={`http://localhost:4000${doctor.image}`}
+                src={`${import.meta.env.VITE_BACKEND_URL}${doctor.image}`}
                 alt={doctor.name}
                 className="td-image"
               />

@@ -18,7 +18,7 @@ export default function Profile() {
       <div className="profile-card">
         
         <img
-          src={user.image ? `http://localhost:4000${user.image}` : "/user.png"}
+          src={user.image ? `${import.meta.env.VITE_BACKEND_URL}${user.image}` : "/user.png"}
           alt="User"
           className="profile-img"
         />

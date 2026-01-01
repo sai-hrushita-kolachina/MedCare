@@ -29,7 +29,7 @@ const TopDoctors = () => {
                 src={
                   doctor.image.startsWith("http")
                     ? doctor.image
-                    : `http://localhost:4000${doctor.image}`
+                    : `${import.meta.env.VITE_BACKEND_URL}${doctor.image}`
                 }
                 alt={doctor.name}
                 className="td-image"

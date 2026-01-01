@@ -142,7 +142,7 @@ function Chatbot() {
         symptoms.push(input.trim());
       }
 
-      const response = await fetch("http://localhost:4000/api/predict/analyzeSymptoms", {
+      const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/predict/analyzeSymptoms`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ symptoms })
@@ -159,13 +159,13 @@ function Chatbot() {
       }
 
       let reply = `
-**Possible Condition:** ${data.predictedDisease}
-**Recommended Doctor:** ${data.specialization}
-**Description:** ${data.descriptions.join(" ")}
-**Severity:** ${data.severity.join(", ")}
-**Precautions:**
-${data.precautions.join(".\n")}.
-`;
+.**Possible Condition:** ${data.predictedDisease}
+.**Recommended Doctor:** ${data.specialization}
+.**Description:** ${data.descriptions.join(" ")}
+.**Severity:** ${data.severity.join(", ")}
+.**Precautions:**
+.${data.precautions.join(".\n")}.
+.`;
 
       setMessages((prev) => [...prev, { sender: "bot", text: reply }]);
     } catch (error) {

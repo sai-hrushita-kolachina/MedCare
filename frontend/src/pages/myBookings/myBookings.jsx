@@ -8,7 +8,7 @@ export default function MyBookings() {
 
   const fetchBookings = () => {
     if (!user?.email) return;
-    fetch(`http://localhost:4000/api/sessions/my-bookings/${user.email}`)
+    fetch(`${import.meta.env.VITE_BACKEND_URL}/api/sessions/my-bookings/${user.email}`)
       .then((res) => res.json())
       .then((data) => {
         if (data.success) setBookings(data.bookings);
@@ -29,7 +29,7 @@ export default function MyBookings() {
 
     try {
       const response = await fetch(
-        `http://localhost:4000/api/sessions/cancel/${id}`,
+        `${import.meta.env.VITE_BACKEND_URL}/api/sessions/cancel/${id}`,
         { method: "PATCH" }
       );
 

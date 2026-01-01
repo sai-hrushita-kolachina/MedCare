@@ -20,7 +20,7 @@ export default function BookingSuccess() {
     const handleSuccess = async () => {
       try {
         const res = await fetch(
-          `http://localhost:4000/api/payment/session/${sessionId}`
+          `${import.meta.env.VITE_BACKEND_URL}/api/payment/session/${sessionId}`
         );
 
         const paymentData = await res.json();
@@ -36,11 +36,11 @@ export default function BookingSuccess() {
 
 
         const doctorImage = paymentData.doctorImage
-          ? `http://localhost:4000${paymentData.doctorImage}`
-          : `http://localhost:4000/assets/default-doc.png`;
+          ? `${import.meta.env.VITE_BACKEND_URL}${paymentData.doctorImage}`
+          : `${import.meta.env.VITE_BACKEND_URL}/assets/default-doc.png`;
 
         const duplicateRes = await fetch(
-          `http://localhost:4000/api/sessions/check/${paymentData.paymentId}`
+          `${import.meta.env.VITE_BACKEND_URL}/api/sessions/check/${paymentData.paymentId}`
         );
         const exists = await duplicateRes.json();
 
@@ -52,7 +52,7 @@ export default function BookingSuccess() {
           return;
         }
 
-        await fetch("http://localhost:4000/api/sessions/add", {
+        await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/sessions/add`,{
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({

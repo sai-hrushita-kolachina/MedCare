@@ -19,7 +19,7 @@ export default function AuthModal({ show, setShow }) {
   const handleSignup = async (e) => {
     e.preventDefault();
 
-    const res = await fetch("http://localhost:4000/api/auth/register", {
+    const res = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/auth/register`,{
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ name, email, password }),
@@ -38,7 +38,7 @@ export default function AuthModal({ show, setShow }) {
   const handleLogin = async (e) => {
     e.preventDefault();
 
-    const res = await fetch("http://localhost:4000/api/auth/login", {
+    const res = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/auth/login`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ email, password }),

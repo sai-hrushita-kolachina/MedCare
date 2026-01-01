@@ -6,12 +6,12 @@ export default function AdminDoctors() {
   const [doctors, setDoctors] = useState([]);
 
   const fetchDoctors = async () => {
-    const res = await axios.get("http://localhost:4000/api/alldoctors");
+    const res = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/api/alldoctors`);
     setDoctors(res.data);
   };
 
   const deleteDoctor = async (id) => {
-    await axios.delete(`http://localhost:4000/api/alldoctors/${id}`);
+    await axios.delete(`${import.meta.env.VITE_BACKEND_URL}/api/alldoctors/${id}`);
     fetchDoctors();
   };
 
@@ -44,7 +44,7 @@ export default function AdminDoctors() {
                     src={
                       doc.image.startsWith("http")
                         ? doc.image
-                        : `http://localhost:4000${doc.image}`
+                        : `${import.meta.env.VITE_BACKEND_URL}${doc.image}`
                     }
                     alt="doctor"
                     className="doctor-table-img"

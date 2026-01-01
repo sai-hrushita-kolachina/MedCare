@@ -22,7 +22,7 @@ export default function AddDoctor() {
     data.append("image", file);
 
     const res = await axios.post(
-      "http://localhost:4000/api/upload",
+      `${import.meta.env.VITE_BACKEND_URL}/api/upload`,
       data,
       {
         headers: { "Content-Type": "multipart/form-data" },
@@ -41,7 +41,7 @@ export default function AddDoctor() {
       imageUrl = await uploadImage();
     }
 
-    await axios.post("http://localhost:4000/api/alldoctors", {
+    await axios.post(`${import.meta.env.VITE_BACKEND_URL}/api/alldoctors`, {
       ...formData,
       image: imageUrl,
     });
