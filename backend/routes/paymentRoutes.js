@@ -53,8 +53,8 @@ router.post("/create-checkout-session", async (req, res) => {
         },
       ],
 
-      success_url: `http://localhost:5173/booking-success?sessionId={CHECKOUT_SESSION_ID}`,
-      cancel_url: "http://localhost:5173/book-session",
+      success_url: `https://medcare24.vercel.app/booking-success?sessionId={CHECKOUT_SESSION_ID}`,
+      cancel_url: "https://medcare24.vercel.app/book-session",
     });
 
     // return checkout page URL

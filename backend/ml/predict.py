@@ -2,15 +2,18 @@ import pandas as pd
 import sys
 import json
 import pickle
+import os
 
-# Load dataset and model
-df = pd.read_csv("ml/medical_data.csv")
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+
+# Load dataset
+df = pd.read_csv(os.path.join(BASE_DIR, "medical_data.csv"))
 
 df['symptom'] = df['symptom'].astype(str).str.strip().str.lower()
 
-# Load ML model and the encoder
-model = pickle.load(open("ml/model.pkl", "rb"))
-encoder = pickle.load(open("ml/encoder.pkl", "rb"))
+# Load ML model and encoder
+model = pickle.load(open(os.path.join(BASE_DIR, "model.pkl"), "rb"))
+encoder = pickle.load(open(os.path.join(BASE_DIR, "encoder.pkl"), "rb"))
 
 
 def doctor_for(disease):

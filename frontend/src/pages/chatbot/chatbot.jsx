@@ -159,13 +159,13 @@ function Chatbot() {
       }
 
       let reply = `
-.**Possible Condition:** ${data.predictedDisease}
-.**Recommended Doctor:** ${data.specialization}
-.**Description:** ${data.descriptions.join(" ")}
-.**Severity:** ${data.severity.join(", ")}
-.**Precautions:**
-.${data.precautions.join(".\n")}.
-.`;
+**Possible Condition:** ${data.predictedDisease}
+**Recommended Doctor:** ${data.specialization}
+**Description:** ${data.descriptions.join(" ")}
+**Severity:** ${data.severity.join(", ")}
+**Precautions:**
+${data.precautions.join(".\n")}.
+`;
 
       setMessages((prev) => [...prev, { sender: "bot", text: reply }]);
     } catch (error) {
