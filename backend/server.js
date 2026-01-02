@@ -19,8 +19,8 @@ const app = express();
 app.use(express.json());
 app.use(cors({
   origin: [
-    "https://medcare24.vercel.app",
-    "https://med-care-admin.vercel.app",
+    process.env.VITE_FRONTEND_URL,
+    process.env.VITE_ADMIN_URL,
     "http://localhost:5173",
     "http://localhost:5174"
   ],

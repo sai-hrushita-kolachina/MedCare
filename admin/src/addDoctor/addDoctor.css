@@ -78,3 +78,104 @@
 .submit-btn:hover {
   background: #072552;
 }
+
+
+@media (max-width: 1050px) {
+  .add-doctor-box {
+    width: 75%;
+  }
+}
+
+@media (max-width: 820px) {
+  .add-doctor-box {
+    width: 85%;
+    padding: 28px;
+  }
+
+  .page-title {
+    font-size: 26px;
+  }
+}
+
+@media (max-width: 720px) {
+  .add-doctor-container {
+    padding: 25px 30px;
+  }
+
+  .add-doctor-box {
+    width: 90%;
+    padding: 26px;
+  }
+
+  .upload-box {
+    width: 150px;
+    height: 105px;
+  }
+}
+
+@media (max-width: 560px) {
+  .add-doctor-box {
+    width: 100%;
+    padding: 22px;
+  }
+
+  .page-title {
+    font-size: 24px;
+  }
+
+  .upload-box {
+    width: 140px;
+    height: 100px;
+  }
+
+  .submit-btn {
+    width: 160px;
+    font-size: 15px;
+  }
+}
+
+@media (max-width: 460px) {
+  .add-doctor-container {
+    padding: 20px;
+  }
+
+  .add-doctor-box {
+    padding: 20px;
+  }
+
+  .form-input {
+    font-size: 14px;
+    padding: 10px;
+  }
+
+  .upload-box {
+    width: 130px;
+    height: 95px;
+  }
+
+  .submit-btn {
+    width: 150px;
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 360px) {
+  .page-title {
+    font-size: 22px;
+  }
+
+  .add-doctor-box {
+    padding: 18px;
+  }
+
+  .upload-box {
+    width: 120px;
+    height: 90px;
+  }
+
+  .submit-btn {
+    width: 140px;
+    padding: 10px;
+    font-size: 13px;
+  }
+}

@@ -44,3 +44,88 @@ a {
     width: 90%;
   }
 }
+
+@media (max-width:1050px) {
+  .app {
+    width: 88%;
+  }
+
+  .page-wrapper {
+    width: 85%;
+  }
+}
+
+@media (max-width:820px) {
+  .app {
+    width: 92%;
+    margin-top: 10px;
+  }
+
+  .page-wrapper {
+    width: 90%;
+  }
+
+  .page-container {
+    padding: 16px 0;
+  }
+}
+
+@media (max-width:720px) {
+  .app {
+    width: 94%;
+  }
+
+  .page-wrapper {
+    width: 92%;
+  }
+}
+
+@media (max-width:560px) {
+  .app {
+    width: 96%;
+  }
+
+  .page-wrapper {
+    width: 94%;
+  }
+
+  body {
+    font-size: 14.5px;
+  }
+}
+
+@media (max-width:460px) {
+  .app {
+    width: 97%;
+  }
+
+  .page-wrapper {
+    width: 96%;
+  }
+
+  .page-container {
+    padding: 14px 0;
+  }
+
+  body {
+    font-size: 14px;
+  }
+}
+
+@media (max-width:360px) {
+  .app {
+    width: 98%;
+  }
+
+  .page-wrapper {
+    width: 96%;
+  }
+
+  .page-container {
+    padding: 12px 0;
+  }
+
+  body {
+    font-size: 13.5px;
+  }
+}

@@ -1,4 +1,8 @@
 import { spawn } from "child_process";
+import path from "path";
+import { fileURLToPath } from "url";
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 export const analyzeSymptoms = async (req, res) => {
   try {
@@ -8,8 +12,8 @@ export const analyzeSymptoms = async (req, res) => {
       return res.status(400).json({ success: false, message: "Symptoms are required" });
     }
 
-    const py = spawn("python", ["ml/predict.py"]);
-
+    const pythonScript = path.join(__dirname, "../ml/predict.py");
+    const py = spawn("python3", [pythonScript]);
     let output = "";
     let error = "";
 

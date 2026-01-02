@@ -142,10 +142,10 @@ function Chatbot() {
         symptoms.push(input.trim());
       }
 
-      const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/predict/analyzeSymptoms`, {
+      const response = await fetch(`${import.meta.env.VITE_ML_URL}/analyze`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ symptoms })
+        body: JSON.stringify({ symptoms: symptoms[0] })
       });
 
       const data = await response.json();
@@ -159,12 +159,12 @@ function Chatbot() {
       }
 
       let reply = `
-**Possible Condition:** ${data.predictedDisease}
-**Recommended Doctor:** ${data.specialization}
-**Description:** ${data.descriptions.join(" ")}
-**Severity:** ${data.severity.join(", ")}
+**Possible Condition:** ${data.predictedDisease || "N/A"}
+**Recommended Doctor:** ${data.specialization || "N/A"}
+**Description:** ${(data.descriptions || ["No description available"]).join(" ")}
+**Severity:** ${(data.severity || ["Not specified"]).join(", ")}
 **Precautions:**
-${data.precautions.join(".\n")}.
+${(data.precautions || ["No precautions provided"]).join(".\n")}.
 `;
 
       setMessages((prev) => [...prev, { sender: "bot", text: reply }]);
