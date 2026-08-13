@@ -29,7 +29,7 @@
 
 .success-btn {
   width: 50%;
-  margin-top: 20px;
+  margin-top: px;
   padding: 12px;
   background: #100b65;
   color: white;
@@ -46,7 +46,7 @@
 
 .home-btn {
   width: 50%;
-  margin-top: 12px;
+  margin-top: 8px;
   padding: 11px;
   background: #100b65;
   color: white;
@@ -70,6 +70,15 @@
   gap: 10px; 
 }
 
+.booking-main-container {
+  min-height: 70vh;
+  padding: 25px 70px;
+}
+
+.loading {
+  margin: 0;
+  font-size: 28px;
+}
 @keyframes fadeIn {
   from {
     opacity: 0;

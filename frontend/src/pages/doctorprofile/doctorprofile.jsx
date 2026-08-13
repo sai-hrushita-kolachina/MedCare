@@ -26,19 +26,32 @@ const aboutText = {
 const DoctorProfile = () => {
   const { id } = useParams();
   const navigate = useNavigate();
-
   const [doctor, setDoctor] = useState(null);
   const [selectedDateIndex, setSelectedDateIndex] = useState(0);
-  const [selectedDate, setSelectedDate] = useState(new Date().toDateString());
+  const [selectedDate, setSelectedDate] = useState(
+    new Date().toDateString()
+  );
+
   const [selectedSlot, setSelectedSlot] = useState(null);
-  const [selectedConsultationType, setSelectedConsultationType] = useState(null);
+
+  const [availableSlots, setAvailableSlots] = useState([]);
+
+  const [selectedConsultationType, setSelectedConsultationType] =
+    useState(null);
+
   const proceedBtnRef = useRef(null);
 
   useEffect(() => {
-    fetch(`${import.meta.env.VITE_BACKEND_URL}/api/alldoctors/${id}`)
+    fetch(
+      `${import.meta.env.VITE_BACKEND_URL}/api/alldoctors/${id}`
+    )
       .then((res) => res.json())
-      .then((data) => setDoctor(data))
-      .catch((err) => console.log(err));
+      .then((data) => {
+        setDoctor(data);
+      })
+      .catch((err) => {
+        console.log("Error fetching doctor:", err);
+      });
   }, [id]);
 
   const getNext7Days = () => {
@@ -50,10 +63,13 @@ const DoctorProfile = () => {
       d.setDate(today.getDate() + i);
 
       arr.push({
-        name: d.toLocaleDateString("en-US", { weekday: "short" }),
+        name: d.toLocaleDateString("en-US", {
+          weekday: "short",
+        }),
+
         number: d.getDate(),
         fullDate: d,
-        dateString: d.toDateString()
+        dateString: d.toDateString(),
       });
     }
     return arr;
@@ -61,46 +77,106 @@ const DoctorProfile = () => {
 
   const next7Days = getNext7Days();
 
-  const allSlots = [
-    "09:00 AM", "09:30 AM",
-    "10:00 AM", "10:30 AM",
-    "11:00 AM", "11:30 AM",
-    "12:00 PM", "12:30 PM",
-    "01:00 PM", "01:30 PM",
-    "02:00 PM", "02:30 PM",
-    "03:00 PM", "03:30 PM"
-  ];
-
   const convert = (slot) => {
     let [time, mer] = slot.split(" ");
     let [h, m] = time.split(":");
     h = parseInt(h);
 
-    if (mer === "PM" && h !== 12) h += 12;
-    if (mer === "AM" && h === 12) h = 0;
+    if (mer === "PM" && h !== 12) {
+      h += 12;
+    }
+
+    if (mer === "AM" && h === 12) {
+      h = 0;
+    }
 
     return `${h.toString().padStart(2, "0")}:${m}`;
   };
 
-  const now = new Date();
-  const cur24 = `${now.getHours().toString().padStart(2, "0")}:${now
-    .getMinutes()
-    .toString()
-    .padStart(2, "0")}`;
 
-  let availableSlots = allSlots;
+  useEffect(() => {
+    if (!doctor || !selectedDate) {
+      return;
+    }
 
-  if (selectedDate === new Date().toDateString()) {
-    availableSlots = allSlots.filter((slot) => convert(slot) > cur24);
+    const fetchAvailableSlots = async () => {
+      try {
+        const response = await fetch(
+          `${import.meta.env.VITE_BACKEND_URL}/api/sessions/available/${encodeURIComponent(
+            doctor.name
+          )}/${encodeURIComponent(selectedDate)}`
+        );
+
+        if (!response.ok) {
+          throw new Error(
+            `Failed to fetch slots: ${response.status}`
+          );
+        }
+
+        const data = await response.json();
+
+        console.log("AVAILABLE SLOT RESPONSE:", data);
+
+        if (!data.success) {
+          setAvailableSlots([]);
+          return;
+        }
+
+        let slots = data.slots || [];
+
+
+        if (selectedDate === new Date().toDateString()) {
+          const now = new Date();
+
+          const currentTime =
+            `${now.getHours().toString().padStart(2, "0")}:` +
+            `${now.getMinutes().toString().padStart(2, "0")}`;
+
+          slots = slots.filter(
+            (slot) => convert(slot) > currentTime
+          );
+        }
+
+        setAvailableSlots(slots);
+        setSelectedSlot((currentSlot) => {
+          if (currentSlot && !slots.includes(currentSlot)) {
+            return null;
+          }
+
+          return currentSlot;
+        });
+      } catch (error) {
+        console.log(
+          "Error fetching available slots:",
+          error
+        );
+
+        setAvailableSlots([]);
+        setSelectedSlot(null);
+      }
+    };
+
+    fetchAvailableSlots();
+  }, [doctor, selectedDate]);
+
+
+  if (!doctor) {
+    return (
+      <div className="loading">
+        Loading...
+      </div>
+    );
   }
 
-  if (!doctor) return <div className="loading">Loading...</div>;
+
   const handleProceed = () => {
     if (!selectedConsultationType || !selectedSlot) {
       proceedBtnRef.current.classList.add("shake");
 
       setTimeout(() => {
-        proceedBtnRef.current.classList.remove("shake");
+        proceedBtnRef.current.classList.remove(
+          "shake"
+        );
       }, 500);
 
       return;
@@ -111,13 +187,17 @@ const DoctorProfile = () => {
         doctor,
         selectedDate,
         selectedTime: selectedSlot,
-        selectedConsultationType
-      }
+        selectedConsultationType,
+      },
     });
   };
 
+ 
+
   return (
     <div className="doctor-profile-page">
+
+      {/* DOCTOR INFORMATION */}
 
       <div className="doctor-main-box">
         <div className="doctor-main-content">
@@ -129,47 +209,86 @@ const DoctorProfile = () => {
           />
 
           <div className="doctor-details">
-            <h2 className="doctor-name">{doctor.name}</h2>
-            <p className="doctor-specialization">{doctor.speciality}</p>
 
-            <p className="doctor-info">
-              <strong>Experience:</strong> {doctor.experience}+ years
+            <h2 className="doctor-name">
+              {doctor.name}
+            </h2>
+
+            <p className="doctor-specialization">
+              {doctor.speciality}
             </p>
 
-            <p className="doctor-about">{aboutText[doctor.speciality]}</p>
+            <p className="doctor-info">
+
+              <strong>
+                Experience:
+              </strong>{" "}
+
+              {doctor.experience}+ years
+
+            </p>
+
+            <p className="doctor-about">
+              {aboutText[doctor.speciality]}
+            </p>
+
           </div>
+
         </div>
+
       </div>
+
+      {/*CONSULTATION + AVAILABILITY*/}
 
       <div className="consultation-wrapper">
 
-        {/* LEFT SIDE */}
+        {/*LEFT SIDE*/}
+
         <div className="left-stack">
 
           <div className="doctor-right">
-            <h3 className="consult-title">Online Consultation</h3>
+
+            <h3 className="consult-title">
+              Online Consultation
+            </h3>
+
+            {/* AUDIO */}
 
             <button
               className={`consult-btn audio-btn ${
-                selectedConsultationType === "Audio" ? "active" : ""
+                selectedConsultationType === "Audio"
+                  ? "active"
+                  : ""
               }`}
-              onClick={() => setSelectedConsultationType("Audio")}
+              onClick={() =>
+                setSelectedConsultationType("Audio")
+              }
             >
               Audio Consultation – ₹150
             </button>
 
+            {/* VIDEO */}
+
             <button
               className={`consult-btn video-btn ${
-                selectedConsultationType === "Video" ? "active" : ""
+                selectedConsultationType === "Video"
+                  ? "active"
+                  : ""
               }`}
-              onClick={() => setSelectedConsultationType("Video")}
+              onClick={() =>
+                setSelectedConsultationType("Video")
+              }
             >
               Video Consultation – ₹250
             </button>
 
+            {/* CHAT */}
+
             <button
               className={`consult-btn chat-btn ${
-                selectedConsultationType === "Chat" ? "active" : ""
+                selectedConsultationType === "Chat"
+                  ? "active"
+                  : ""
               }`}
               onClick={() => {
                 setSelectedConsultationType("Chat");
@@ -181,11 +300,15 @@ const DoctorProfile = () => {
 
           </div>
 
-          {/* Proceed Button */}
+          {/*PROCEED BUTTON*/}
+
           <button
             ref={proceedBtnRef}
             className={`proceed-btn ${
-              !selectedConsultationType || !selectedSlot ? "disabled" : ""
+              !selectedConsultationType ||
+              !selectedSlot
+                ? "disabled"
+                : ""
             }`}
             onClick={handleProceed}
           >
@@ -194,51 +317,108 @@ const DoctorProfile = () => {
 
         </div>
 
-        {/* RIGHT SIDE */}
+        {/*RIGHT SIDE*/}
+
         <div className="availability-box">
-          <h3 className="availability-title">Doctor Availability</h3>
+
+          <h3 className="availability-title">
+            Doctor Availability
+          </h3>
+
+          {/*DATE LIST*/}
 
           <div className="date-list">
+
             {next7Days.map((item, index) => (
+
               <div
                 key={index}
+
                 className={`date-item ${
-                  selectedDateIndex === index ? "selected" : ""
+                  selectedDateIndex === index
+                    ? "selected"
+                    : ""
                 }`}
+
                 onClick={() => {
                   setSelectedSlot(null);
+
                   setSelectedDateIndex(index);
-                  setSelectedDate(item.dateString);
+
+                  setSelectedDate(
+                    item.dateString
+                  );
                 }}
               >
-                <p className="day">{item.name}</p>
-                <p className="date">{item.number}</p>
+
+                <p className="day">
+                  {item.name}
+                </p>
+
+                <p className="date">
+                  {item.number}
+                </p>
+
               </div>
+
             ))}
+
           </div>
 
+          {/*TIME SLOTS*/}
+
           <div className="time-slots">
+
             {availableSlots.length === 0 ? (
-              <p className="no-slots">No more slots available</p>
+
+              <p className="no-slots">
+                No more slots available
+              </p>
+
             ) : (
+
               availableSlots.map((slot, i) => (
+
                 <button
-                  key={i}
+                  key={`${slot}-${i}`}
+
                   className={`slot-btn ${
-                    selectedSlot === slot ? "slot-selected" : ""
+                    selectedSlot === slot
+                      ? "slot-selected"
+                      : ""
                   }`}
-                  onClick={() => setSelectedSlot(slot)}
+
+                  onClick={() =>
+                    setSelectedSlot(slot)
+                  }
                 >
                   {slot}
                 </button>
+
               ))
+
             )}
+
           </div>
 
+          {/*SELECTED SLOT*/}
+
           {selectedSlot && (
+
             <p className="selected-info">
-              Selected: <strong>{selectedDate}</strong> at{" "}
-              <strong>{selectedSlot}</strong>
+
+              Selected:{" "}
+
+              <strong>
+                {selectedDate}
+              </strong>{" "}
+
+              at{" "}
+
+              <strong>
+                {selectedSlot}
+              </strong>
+
             </p>
           )}
         </div>
